@@ -76,5 +76,15 @@ class RestaurantTest {
 	}
 	// <<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+	// >>>>>>>>>>>>>>>>>>>>>>>>>>>TOTAL AMOUNT<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 	
+	@Test
+	public void when_no_items_are_selected_from_the_menu_return_the_total_amount_as_0() {
+		List<String> items = new ArrayList<String>();
+
+		assertEquals(0, restaurant.getTotalAmount(items));
+
+	}
+	
+	// <<<<<<<<<<<<<<<<<<<<<<<TOTAL AMOUNT>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 }
