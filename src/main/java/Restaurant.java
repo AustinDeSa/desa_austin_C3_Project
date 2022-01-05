@@ -66,6 +66,16 @@ public class Restaurant {
 		return currentTime;
 	}
 
-	
+	public int getTotalAmount(List<String> itemNames) {
+		int total = 0;
+
+		for (int i = 0; i < itemNames.size(); i++) {
+			Item item = findItemByName(itemNames.get(i));
+			total = total + item.getPrice();
+		}
+
+		return total;
+
+	}
 
 }

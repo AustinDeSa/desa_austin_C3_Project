@@ -77,7 +77,18 @@ class RestaurantTest {
 	// <<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 	// >>>>>>>>>>>>>>>>>>>>>>>>>>>TOTAL AMOUNT<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-	
+	@Test
+	public void when_items_are_selected_from_the_menu_then_return_the_total_amount() {
+		List<String> items = new ArrayList<String>();
+		items.add("Sweet corn soup");
+		items.add("Vegetable lasagne");
+
+		assertNotEquals(0, restaurant.getTotalAmount(items));
+
+		assertEquals(388, restaurant.getTotalAmount(items));
+
+	}
+
 	@Test
 	public void when_no_items_are_selected_from_the_menu_return_the_total_amount_as_0() {
 		List<String> items = new ArrayList<String>();
@@ -85,6 +96,23 @@ class RestaurantTest {
 		assertEquals(0, restaurant.getTotalAmount(items));
 
 	}
-	
+
+	@Test
+	public void when_items_are_selected_and_then_removed_from_the_menu_return_the_total_amount() {
+		List<String> items = new ArrayList<String>();
+		items.add("Vegetable lasagne");
+		items.add("Sweet corn soup");
+
+		int amountBeforeItemRemoved = restaurant.getTotalAmount(items);
+
+		int itemTwoPrice = restaurant.getTotalAmount(items.subList(0, 1));
+
+		items.remove(1);
+
+		int amountAfterItemRemoved = amountBeforeItemRemoved - itemTwoPrice;
+
+		assertThat(119, equalTo(amountAfterItemRemoved));
+
+	}
 	// <<<<<<<<<<<<<<<<<<<<<<<TOTAL AMOUNT>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 }
